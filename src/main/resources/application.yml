@@ -1,0 +1,15 @@
+# DBの設定ファイル
+
+# http://localhost:8080/h2-console
+# 上記URLでブラウザからアクセス可能
+
+spring:
+  datasource:
+    # mem メモリのこと 起動ごとに初期化される
+    url: jdbc:h2:mem:test
+    driverClassName: org.h2.Driver
+    # デフォルトのname,password
+    username: sa
+    password: sa
+  # ブラウザでh2dbを確認できる
+  h2.console.enabled: true
