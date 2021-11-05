@@ -4,8 +4,10 @@ Spring bootによるログイン機能の実装
 ## 参照
 ドキュメント<br>
 https://spring.pleiades.io/guides/gs/securing-web/
+<br>
+<br>
 
-参考にさせていただいたQiitaの記事<br>
+### 参考にさせていただいたQiitaの記事
 ***
 - https://qiita.com/yosuke_takeuchi/items/93f9155b5a4fa1976247
 - https://qiita.com/curry__30/items/276ba2b9236066683ba4
@@ -23,12 +25,16 @@ https://spring.pleiades.io/guides/gs/securing-web/
 - web
 
 ## アノテーション
-@Configuration<br>
+```
+@Configuration
+```
 JavaConfig用の設定ファイルとして認識
-
-@EnableWebSecurity<br>
-Spring-Securityを使うため
+<br>
+<br>
 
 ```
-コードブロック
+@EnableWebSecurity
 ```
+Spring-Securityを有効化する
+<br>
+<br>
