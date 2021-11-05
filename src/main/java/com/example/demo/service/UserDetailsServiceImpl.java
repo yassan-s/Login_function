@@ -26,6 +26,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
+    	//Daoの検索メソッドを実行し、ユーザー情報を取得
         LoginUser loginUser = userDao.findUser(userName);
 
         if (loginUser == null) {
@@ -41,7 +42,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         //rawDataのパスワードは渡すことができないので、暗号化
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-        //UserDetailsはインタフェースなのでUserクラスのコンストラクタで生成したユーザオブジェクトをキャスト
+        //UserDetailsはインタフェースなので、Userクラスのコンストラクタで生成したユーザオブジェクトをキャスト
+        //org.springframework.security.core.userdetails.User を利用
         UserDetails userDetails = (UserDetails)new User(loginUser.getUsername(), encoder.encode(loginUser.getPassword()),grantList);
 
         return userDetails;

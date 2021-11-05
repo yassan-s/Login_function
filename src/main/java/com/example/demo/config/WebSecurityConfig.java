@@ -29,7 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 			.authorizeRequests()
-				// URLの認証は必要としない
+				//URLの認証は必要としない
 				.antMatchers("/", "/home", "/h2-console").permitAll()
 				.anyRequest().authenticated()
 				.and()
@@ -41,6 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll();
 	}
 
+	//ユーザー情報の取得
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());

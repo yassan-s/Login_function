@@ -34,8 +34,12 @@ public class LoginUserDao {
 		sql += "FROM user ";
 		sql += "WHERE username = ?";
 
+		//SQL実行
+		//SQLの？にuserNameを入れる
+		//ヒットするレコードは１件なので,List+MapではなくMapのみ
 		Map<String, Object> result = jdbcTemplate.queryForMap(sql, userName);
 
+		//取得したレコードをLoginUserクラスに入れ替える
 		LoginUser loginUser = new LoginUser();
 		loginUser.setId((int)result.get("id"));
 		loginUser.setUsername((String)result.get("username"));
