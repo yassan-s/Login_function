@@ -25,26 +25,41 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return bCryptPasswordEncoder;
     }
 
+    //URLによって認証が必要なのかどうかを定義
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
+			//リクエスト時に認証が必要かを定義
 			.authorizeRequests()
-				//URLの認証は必要としない
+				//認証が必要ない
 				.antMatchers("/", "/home", "/h2-console").permitAll()
+				//上記以外は認証が必要
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
+			    //ログインページはコントローラを経由しないのでViewNameとの紐付けが必要
 				.loginPage("/login")
+				//フォームのSubmitURL、このURLへリクエストが送られると認証処理が実行される
+				.loginProcessingUrl("/sign_in")
+				//リクエストパラメータのname属性を明示
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.failureUrl("/login?error")
 				.permitAll()
 				.and()
 			.logout()
+				.logoutUrl("/logout")
+				.logoutSuccessUrl("/login?logout")
 				.permitAll();
 	}
 
 	//ユーザー情報の取得
+	//認証を行う
+	//その際、パスワードはBCryptでハッシュ化した値を利用する
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService)
+        		.passwordEncoder(passwordEncoder());
     }
 
 }
