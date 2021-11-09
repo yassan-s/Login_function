@@ -29,6 +29,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     	//Daoの検索メソッドを実行し、ユーザー情報を取得
         LoginUser loginUser = userDao.findUser(userName);
 
+        //UsernameNotFoundExceptionで例外処理
         if (loginUser == null) {
             throw new UsernameNotFoundException("User" + userName + "was not found in the database");
         }
