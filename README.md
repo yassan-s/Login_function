@@ -30,7 +30,6 @@ https://spring.pleiades.io/guides/gs/securing-web/
 <br>
 <br>
 
-
 ## アノテーション
 ```
 @Configuration
@@ -52,3 +51,29 @@ Spring-Securityを有効化する
 Spring がコンテナの中からその「プロパティの型に合うクラス」のインスタンスを裏で new してくれる (DI)
 <br>
 <br>
+
+## Cookie Session について
+
+□ 前提<br>
+HTTPが「Stateless(ステートレス)」なので、サーバーがクライアントの情報を保持し続けられない。<br>
+したがってサーバー側がアクセスしてきたクライアントが同一人物かわからない。<br>
+
+□ Session<br>
+このような一連の流れをSessionと言う。<br>
+- サイトにログイン
+- サイト内で処理をする（ECサイトで買い物カゴに入れる など）
+- ログアウトする
+
+□ Cookie<br>
+ECサイトなどにアクセスした時に以下の流れが起こる。
+- サーバーは、「Session ID」を生成して、ユーザーと紐付けた上でサーバーに保存
+- ショッピングサイトの画面を返すと同時に、このSession IDをブラウザに渡す
+- 送られてきたSession IDを、送ってきたサーバーの情報等を含めた上で、「Cookie」に保存
+<br>
+
+つまり、CookieによりSession IDをもとにクライアントを識別することができる
+
+### 参考にさせていただいた記事
+***
+- https://www.engilaboo.com/definitely-understand-cookie-session/
+***
