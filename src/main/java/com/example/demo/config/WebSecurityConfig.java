@@ -15,8 +15,8 @@ import com.example.demo.service.UserDetailsServiceImpl;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	@Autowired
-	private UserDetailsServiceImpl userDetailsService;
+    @Autowired
+    private UserDetailsServiceImpl userDetailsService;
 
     //フォームの値と比較するDBから取得したパスワードは暗号化されているのでフォームの値も暗号化するために利用
     @Bean
@@ -37,7 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.anyRequest().authenticated()
 				.and()
 			.formLogin()
-			    //ログインページはコントローラを経由しないのでViewNameとの紐付けが必要
+				//ログインページはコントローラを経由しないのでViewNameとの紐付けが必要
 				.loginPage("/login")
 				//フォームのSubmitURL、このURLへリクエストが送られると認証処理が実行される
 				.loginProcessingUrl("/sign_in")
@@ -50,12 +50,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout()
 				.logoutUrl("/logout")
 				.logoutSuccessUrl("/login?logout")
-				.permitAll();
+				.permitAll()
+
+				;
 	}
 
-	//ユーザー情報の取得
-	//認証を行う
-	//その際、パスワードはBCryptでハッシュ化した値を利用する
+    //ユーザー情報の取得
+    //認証を行う
+    //その際、パスワードはBCryptでハッシュ化した値を利用する
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService)
