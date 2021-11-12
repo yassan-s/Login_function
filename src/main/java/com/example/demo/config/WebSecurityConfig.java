@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			//リクエスト時に認証が必要かを定義
 			.authorizeRequests()
 				//認証が必要ない
-				.antMatchers("/", "/home", "/h2-console").permitAll()
+				.antMatchers("/", "/home").permitAll()
 				//上記以外は認証が必要
 				.anyRequest().authenticated()
 				.and()
@@ -51,7 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.logoutUrl("/logout")
 				.logoutSuccessUrl("/login?logout")
 				.permitAll()
-
+				.and()
+			// rememberMeの有効化
+			.rememberMe()
 				;
 	}
 
