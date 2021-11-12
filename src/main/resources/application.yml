@@ -13,3 +13,16 @@ spring:
     password: sa
   # ブラウザでh2dbを確認できる
   h2.console.enabled: true
+
+server:
+  servlet:
+    session:
+      cookie:
+        # 秒数で指定（負の数で無限）
+        # ExpiresもMax-Ageもない場合は、
+        # Webブラウザのセッション終了まで有効（ブラウザを終了すると削除される）
+        max-age: 3600
+        # Cookieが有効なパス範囲の指定
+        # 指定されたドメインに含まれるならCookieが有効
+        # Domainがない場合は、現在のホストでのみ有効
+        path:   /

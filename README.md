@@ -27,8 +27,7 @@ https://spring.pleiades.io/guides/gs/securing-web/
 - JDBC API
 - Thymeleaf
 - web
-<br>
-<br>
+
 
 ## アノテーション
 ```
@@ -71,9 +70,14 @@ ECサイトなどにアクセスした時に以下の流れが起こる。
 - 送られてきたSession IDを、送ってきたサーバーの情報等を含めた上で、「Cookie」に保存
 <br>
 
-つまり、CookieによりSession IDをもとにクライアントを識別することができる
+つまり、CookieによりSession IDをもとにクライアントを識別することができる。
 
 ### 参考にさせていただいた記事
 ***
 - https://www.engilaboo.com/definitely-understand-cookie-session/
+- https://b1san-blog.com/post/web/web-cookie/
+- https://qiita.com/opengl-8080/items/7c34053c74448d39e8f5
+- https://b1san-blog.com/post/spring/spring-session/
+- https://github.com/motaharinia/springboot-securityrememberme
+- https://atmarkit.itmedia.co.jp/ait/articles/1704/20/news024_2.html
 ***
