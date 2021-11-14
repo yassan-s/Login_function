@@ -5,8 +5,8 @@ Spring bootによるログイン機能の実装
 
 ## 参照
 ドキュメント<br>
-https://spring.pleiades.io/guides/gs/securing-web/
-<br>
+- https://spring.pleiades.io/guides/gs/securing-web/
+- https://spring.pleiades.io/spring-boot/docs/current/reference/html/
 <br>
 
 ### 参考にさせていただいた記事

@@ -6,7 +6,8 @@
     </head>
     <body>
     	<h1 th:text="${greet}">greet</h1>
-        <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]!</h1>
+        <!-- <h1 th:inline="text">[[${#httpServletRequest.remoteUser}]]!</h1> -->
+        <h2 th:text="${loginuser}">loginUserName</h2>
         <form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
         </form>
