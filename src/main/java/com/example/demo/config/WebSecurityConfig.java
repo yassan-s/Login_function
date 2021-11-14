@@ -59,7 +59,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     //ユーザー情報の取得
     //認証を行う
-    //その際、パスワードはBCryptでハッシュ化した値を利用する
+    //その際、パスワードはBCryptでハッシュ化(元の値に変更不可)した値を利用する
     @Autowired
     public void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.userDetailsService(userDetailsService)
