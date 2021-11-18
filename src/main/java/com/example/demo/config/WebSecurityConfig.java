@@ -55,6 +55,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			// rememberMeの有効化
 			.rememberMe()
 				;
+		//h2dbをブラウザで見れるようにする
+		http.csrf().disable();
+		http.headers().frameOptions().disable();
 	}
 
     //ユーザー情報の取得
